@@ -34,8 +34,8 @@ basic_system_setup
 
 # Instalar VS Code e Sublime Text via Snap
 echo "Instalando VS Code e Sublime Text..."
-source "${scriptsdir}/installfavs.sh"
-install_favs
+source "${scriptsdir}/apt.sh"
+install_apps
 
 
 echo "Installation Complete!"
