@@ -71,12 +71,13 @@ function install_apps {
         "bitwarden"
         "todoist"
         "anki-ppd"
-        "code --classic"
+        "discord"
     )
     for app in "${snap_apps[@]}"; do
         echo "Instalando $app via Snap..."
         sudo snap install "$app"
     done
+    snap install code --classic
 
     # Instalar aplicativos via Flatpak
     echo "Instalando Flatpak e aplicativos via Flatpak..."
