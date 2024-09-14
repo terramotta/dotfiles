@@ -10,33 +10,34 @@ function install_apps {
     # Instalar aplicativos adicionais via APT
     echo "Instalando aplicativos adicionais via APT..."
     apt_apps=(
-        "google-chrome-stable"
-        "brave-browser"
+        "firefox"
+        "libreoffice"
+        "thunderbird"
     )
     sudo apt install -y "${apt_apps[@]}"
 
     # Instalar ferramentas de desenvolvimento via APT
     echo "Instalando ferramentas de desenvolvimento via APT..."
-    dev_tools=(
-        "python"
-        "bash"
-        "git"
-        "tree"
-        "pylint"
-        "black"
-        "node"
-        "build-essential"
-        "sublime-text"
-        "visual-studio-code"
-        "vscode"
-        "code"
-    )
-    sudo apt install -y "${dev_tools[@]}"
+    sudo apt install -y \
+    python3 \
+    bash \
+    git \
+    tree \
+    pylint \
+    black \
+    nodejs \
+    build-essential \
+    chromium \
+
+    # Sublime Text
+    | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/sublimehq-archive.gpg > /dev/null
+    echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list
+    sudo apt-get update
+    sudo apt-get install sublime-text
 
     # Instalar utilitários adicionais via APT
     echo "Instalando utilitários adicionais via APT..."
     utils=(
-        "firefox"
         "zstd"
         "vlc"
         "gimp"
@@ -80,16 +81,16 @@ function install_apps {
     snap install code --classic
 
     # Instalar aplicativos via Flatpak
-    echo "Instalando Flatpak e aplicativos via Flatpak..."
-    sudo apt install -y flatpak
-    flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-    flatpak_apps=(
-        "com.discordapp.Discord"
-    )
-    for app in "${flatpak_apps[@]}"; do
-        echo "Instalando $app via Flatpak..."
-        flatpak install -y flathub "$app"
-    done
+    #echo "Instalando Flatpak e aplicativos via Flatpak..."
+    #sudo apt install -y flatpak
+    #flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+    #flatpak_apps=(
+    #    "com.discordapp.Discord"
+    #)
+    #for app in "${flatpak_apps[@]}"; do
+    #    echo "Instalando $app via Flatpak..."
+    #    flatpak install -y flathub "$app"
+    #done
 
     # Configuração do Git
     echo "Configurando Git..."
@@ -123,6 +124,18 @@ function install_apps {
     read
 
     echo "Faça login no Discord. Pressione Enter para continuar..."
+    read
+
+    echo "Coloque a energia no modo de desempenho..."
+    read
+
+    echo "Coloque o NVIDIA X Server em modo desempenho..."
+    read
+
+    echo "Ative as opções de multi-tarefas..."
+    read
+
+    echo "Faça login no OneDrive pelas configurações..."
     read
 
     echo "Instalação de aplicativos e ferramentas concluída."
