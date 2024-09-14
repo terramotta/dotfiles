@@ -14,5 +14,9 @@ function basic_system_setup {
     echo "Configurando o Tema do Sistema..."
     gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-dark'
 
+    # Desativa a aceleração do mouse
+    echo "Desativando aceleração do mouse."
+    xset m 0 0
+
     echo "Configuração básica do sistema concluída."
 }
