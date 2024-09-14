@@ -1,10 +1,7 @@
 #!/usr/bin/env bash
 ############################
 # This script creates symlinks from the home directory to any desired dotfiles in $HOME/dotfiles
-# And also installs MacOS Software
-# And also installs Homebrew Packages and Casks (Apps)
-# And also sets up VS Code
-# And also sets up Sublime Text
+# And also installs and configures essential software
 ############################
 
 # dotfiles directory
@@ -32,10 +29,19 @@ source "${scriptsdir}/setupsystem.sh"
 update_system
 basic_system_setup
 
-# Instalar VS Code e Sublime Text via Snap
-echo "Instalando VS Code e Sublime Text..."
+
+# Instalar aplicativos e ferramentas
+echo "Installing applications and tools..."
 source "${scriptsdir}/apt.sh"
 install_apps
+
+# Configurar VS Code
+echo "Configuring VS Code..."
+# Verificar e garantir permissões de execução
+if [ ! -x "${scriptsdir}/vscode.sh" ]; then
+    chmod +x "${scriptsdir}/vscode.sh"
+fi
+"${scriptsdir}/vscode.sh"
 
 
 echo "Installation Complete!"
