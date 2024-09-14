@@ -49,6 +49,7 @@ function install_apps {
     # Instalar fontes via APT
     echo "Instalando fontes via APT..."
     echo "Instale manualmente as fontes: JetBrainsMono Nerd Font, Inter, JetBrains Mono"
+    read
     # fonts=(
     #     "fonts-dejavu"
     #     "fonts-freefont-ttf"
