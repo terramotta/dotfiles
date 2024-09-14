@@ -1,4 +1,4 @@
-#!/usr/bin/env zsh
+#!/usr/bin/env bash
 ############################
 # This script creates symlinks from the home directory to any desired dotfiles in $HOME/dotfiles
 # And also installs MacOS Software
@@ -9,9 +9,11 @@
 
 # dotfiles directory
 dotfiledir="${HOME}/dotfiles"
+# scripts directory
+scriptsdir="${dotfiledir}/scripts"
 
 # list of files/folders to symlink in ${homedir}
-files=(zshrc zprofile zprompt bashrc bash_profile bash_prompt aliases private)
+files=(bashrc bash_profile bash_prompt aliases private)
 
 # change to the dotfiles directory
 echo "Changing to the ${dotfiledir} directory"
@@ -23,16 +25,17 @@ for file in "${files[@]}"; do
     ln -sf "${dotfiledir}/.${file}" "${HOME}/.${file}"
 done
 
-# Run the MacOS Script
-./macOS.sh
+# Atualizar o sistema e instalar pacotes essenciais
+echo "Atualizando o sistema e instalando pacotes essenciais..."
+source "${scriptsdir}/updatesystem.sh"
+source "${scriptsdir}/setupsystem.sh"
+update_system
+basic_system_setup
 
-# Run the Homebrew Script
-./brew.sh
+# Instalar VS Code e Sublime Text via Snap
+echo "Instalando VS Code e Sublime Text..."
+source "${scriptsdir}/installfavs.sh"
+install_favs
 
-# Run VS Code Script
-./vscode.sh
-
-# Run the Sublime Script
-./sublime.sh
 
 echo "Installation Complete!"
