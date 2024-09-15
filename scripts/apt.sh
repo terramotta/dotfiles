@@ -46,6 +46,9 @@ function install_apps {
     )
     sudo apt install -y "${utils[@]}"
 
+    sudo add-apt-repository universe
+    sudo apt install gnome-tweaks 
+
     # Instalar fontes via APT
     echo "Instalando fontes via APT..."
     echo "Instale manualmente as fontes: JetBrainsMono Nerd Font, Inter, JetBrains Mono"
