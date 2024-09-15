@@ -1,62 +1,59 @@
-# Define the prompt_git function for git repository status
+#!/bin/bash
+
+# Função para status do repositório Git
 prompt_git() {
     local git_status=''
     local branchName=''
 
-    # Check if the current directory is in a Git repository.
+    # Verificar se o diretório atual está em um repositório Git
     if git rev-parse --is-inside-work-tree &>/dev/null; then
-        # Get the status summary.
+        # Obter resumo do status
         local gitSummary=$(git status --porcelain)
 
-        # Check for uncommitted changes in the index, unstaged changes, untracked files, and stashed files.
-        [[ -n $(echo "$gitSummary" | grep '^M') ]] && git_status+='+'
-        [[ -n $(echo "$gitSummary" | grep '^ M') ]] && git_status+='!'
-        [[ -n $(echo "$gitSummary" | grep '^\?\?') ]] && git_status+='?'
-        [[ $(
-            git rev-parse --verify refs/stash &>/dev/null
-            echo "${?}"
-        ) == '0' ]] && git_status+='$'
+        # Verificar alterações não confirmadas, alterações não rastreadas e arquivos stash
+        [[ -n $(echo "$gitSummary" | grep '^M') ]] && git_status+='+' # Alterações no índice
+        [[ -n $(echo "$gitSummary" | grep '^ M') ]] && git_status+='!' # Alterações não estagiadas
+        [[ -n $(echo "$gitSummary" | grep '^\?\?') ]] && git_status+='?' # Arquivos não rastreados
+        [[ $(git rev-parse --verify refs/stash &>/dev/null; echo "${?}") == '0' ]] && git_status+='$' # Arquivos stash
 
-        # Get the short symbolic ref or the short SHA for the latest commit.
+        # Obter o nome do branch ou SHA curto do último commit
         branchName="$(git symbolic-ref --quiet --short HEAD 2>/dev/null || git rev-parse --short HEAD 2>/dev/null || echo '(unknown)')"
 
         [ -n "${git_status}" ] && git_status=" [${git_status}]"
 
         printf "%b on %b%s%s" "${white}" "${blue}" "${branchName}" "${git_status}"
-    else
-        return
     fi
 }
 
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 prompt_venv() {
     if [[ -n "$VIRTUAL_ENV" ]]; then
-        # Extract the last directory name in the $VIRTUAL_ENV path
+        # Extrair o nome do diretório do ambiente virtual
         venv_name=$(basename "$VIRTUAL_ENV")
         printf "\n%b(%s)\n" "${steel_blue}" "${venv_name}"
     fi
 }
 
-# Using tput for colors and formatting.
-tput sgr0 # reset colors
+# Usar tput para cores e formatação
+tput sgr0 # Resetar cores
 bold=$(tput bold)
 reset=$(tput sgr0)
-blue=$(tput setaf 153)
+blue=$(tput setaf 33) # Alterado para um valor padrão, ajuste conforme necessário
 steel_blue=$(tput setaf 67)
-green=$(tput setaf 71)
-orange=$(tput setaf 166)
-red=$(tput setaf 167)
-white=$(tput setaf 15)
-yellow=$(tput setaf 228)
+green=$(tput setaf 2) # Alterado para um valor padrão, ajuste conforme necessário
+orange=$(tput setaf 208)
+red=$(tput setaf 1)
+white=$(tput setaf 7)
+yellow=$(tput setaf 3) # Alterado para um valor padrão, ajuste conforme necessário
 
-# Highlight the user name when logged in as root.
+# Destacar o nome do usuário se for root
 if [[ "${USER}" == "root" ]]; then
     userStyle="${red}"
 else
     userStyle="${orange}"
 fi
 
-# Highlight the hostname when connected via SSH.
+# Destacar o hostname se conectado via SSH
 if [[ "${SSH_TTY}" ]]; then
     hostStyle="${bold}${red}"
 else

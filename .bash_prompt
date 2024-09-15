@@ -1,17 +1,21 @@
+#!/bin/bash
 
+# Carregar configurações compartilhadas do prompt
 source "${HOME}/dotfiles/.shared_prompt"
 
-PS1="\$(prompt_venv)" # virtual environment
-PS1+="\[${bold}\]\n" # newline
-PS1+="\[${userStyle}\]\u" # username
+# Configuração do prompt principal
+PS1="\$(prompt_venv)" # Ambiente virtual
+PS1+="\[${bold}\]\n" # Nova linha
+PS1+="\[${userStyle}\]\u" # Nome do usuário
 PS1+="\[${white}\] at "
-PS1+="\[${hostStyle}\]\h" # host
+PS1+="\[${hostStyle}\]\h" # Host
 PS1+="\[${white}\] in "
-PS1+="\[${green}\]\W" # working directory
-PS1+="\$(prompt_git)" # Git repository details
+PS1+="\[${green}\]\W" # Diretório de trabalho
+PS1+="\$(prompt_git)" # Detalhes do repositório Git
 PS1+="\n"
-PS1+="\[${white}\]\$ \[${reset}\]" # `$` (and reset color)
+PS1+="\[${white}\]\$ \[${reset}\]" # `$` e reset de cor
 export PS1
 
+# Configuração do prompt secundário
 PS2="\[${yellow}\]→ \[${reset}\]"
 export PS2
