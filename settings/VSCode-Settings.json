@@ -1,99 +1,81 @@
 {
-  // Recording specific settings
-  "editor.fontSize": 16, // Use 18 for Screen Recordings
-  "debug.console.fontSize": 16, // Use 18 for Screen Recordings
-  "terminal.integrated.fontSize": 16, // Use 18 for Screen Recordings
-  "window.zoomLevel": 0, // Use 3 for Screen Recordings
-
-  // Uncomment Below for Recording...
-
-  // "editor.fontSize": 18, // Use 18 for Screen Recordings
-  // "debug.console.fontSize": 18, // Use 18 for Screen Recordings
-  // "terminal.integrated.fontSize": 18, // Use 18 for Screen Recordings
-  // "window.zoomLevel": 3, // Use 3 for Screen Recordings
-  // "github.copilot.editor.enableAutoCompletions": false,
-  // "editor.quickSuggestions": {
-  //   "comments": "off",
-  //   "strings": "off"
-  //   "other": "on",
-  // },
-  // "editor.lightbulb.enabled": "off",
-  // "editor.parameterHints.enabled": false,
-  // "editor.hover.enabled": false,
-  // "editor.inlineSuggest.enabled": false,
-  // "editor.suggest.showSnippets": false,
-
-  // END - Recording specific settings
-
-  // General settings
-  "workbench.colorTheme": "Predawn",
-  "workbench.iconTheme": "ayu",
-  "editor.fontFamily": "Source Code Pro",
-  "debug.console.fontFamily": "Source Code Pro",
-  "editor.fontWeight": "500",
-  "terminal.integrated.fontWeight": "600",
-  "workbench.settings.openDefaultSettings": true,
-  "workbench.settings.useSplitJSON": true,
-  "workbench.settings.editor": "json",
-  "workbench.startupEditor": "newUntitledFile",
-  "editor.tabSize": 4,
-  "editor.formatOnSave": true,
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "editor.quickSuggestionsDelay": 100,
-  "editor.minimap.enabled": false,
-  "diffEditor.useInlineViewWhenSpaceIsLimited": false,
-
-  // Zen Mode settings
-  "zenMode.centerLayout": false,
-  "zenMode.fullScreen": false,
-  "zenMode.hideLineNumbers": false,
-
-  // Python settings
-  "[python]": {
-    "editor.defaultFormatter": "ms-python.black-formatter",
+    // Configurações do editor
+    "explorer.confirmDragAndDrop": false,
+    "json.schemas": [],
+    "python.interpreter.infoVisibility": "onPythonRelated",
+    "editor.defaultFormatter": "ms-python.autopep8",
+    "python.languageServer": "Pylance",
     "editor.formatOnSave": true,
-    "editor.codeActionsOnSave": {
-      "source.organizeImports": "explicit"
-    }
-  },
-  "python.venvPath": "~/venvs",
-  "isort.args": ["--profile", "black"],
-  "pylint.args": ["--disable=C0114,C0115,C0116,C0103,C0301,W0621,W0718,W1203"],
-  "pylint.importStrategy": "fromEnvironment",
+    "editor.inlineSuggest.enabled": true,
+    "pylint.showNotifications": "onError",
 
-  // Code Runner settings
-  "code-runner.clearPreviousOutput": true,
-  "code-runner.showExecutionMessage": false,
-  "code-runner.ignoreSelection": true,
-  "code-runner.saveFileBeforeRun": true,
-  "code-runner.executorMap": {
-    "python": "\"$pythonPath\" -u $fullFileName"
-  },
-  "code-runner.enableAppInsights": false,
+    // Configurações do terminal
+    "terminal.integrated.fontSize": 16,
+    "terminal.integrated.fontWeight": "600",
+    "terminal.integrated.fontFamily": "JetBrainsMono Nerd Font",
+    "terminal.integrated.cursorStyle": "line",
+    "terminal.integrated.defaultProfile.windows": "Git Bash",
+    "terminal.integrated.hideOnStartup": "always",
 
-  // Plaintext settings
-  "[plaintext]": {
-    "editor.quickSuggestions": {
-      "comments": "off",
-      "strings": "off",
-      "other": "off"
-    }
-  },
+    // Configurações do Git
+    "git.confirmSync": true,
 
-  // Shell script settings
-  "[shellscript]": {
-    "editor.defaultFormatter": "foxundermoon.shell-format"
-  },
+    // Configurações de View e Layout
+    "symbols.hidesExplorerArrows": false,
+    "workbench.layoutControl.enabled": false,
+    "workbench.startupEditor": "newUntitledFile",
+    "window.commandCenter": false,
+    "window.titleBarStyle": "custom",
+    "editor.cursorSmoothCaretAnimation": "on",
+    "workbench.iconTheme": "ayu",
+    "workbench.colorTheme": "Cold Python Theme",
+    "editor.fontFamily": "JetBrains Mono",
+    "editor.fontSize": 16,
+    "editor.fontWeight": "500",
+    "editor.lineHeight": 2.0,
+    "editor.rulers": [
+        90, // Define uma guia de recuo em 80 caracteres
+        120 // Define uma segunda guia de recuo em 120 caracteres
+    ],
+    "editor.renderLineHighlight": "gutter",
+    "editor.fontLigatures": true,
+    "workbench.editor.labelFormat": "short",
+    "explorer.compactFolders": false,
+    "editor.semanticHighlighting.enabled": false,
+    "breadcrumbs.enabled": false,
+    "workbench.activityBar.location": "side",
+    "editor.minimap.enabled": false,
+    "editor.scrollbar.vertical": "hidden",
+    "editor.scrollbar.horizontal": "hidden",
+    "workbench.statusBar.visible": true,
+    "workbench.settings.editor": "json",
 
-  // Notebook settings
-  "notebook.output.scrolling": true,
-  "notebook.formatOnSave.enabled": true,
-  "notebook.lineNumbers": "on",
-  "notebook.scrolling.revealNextCellOnExecute": "none",
-  "notebook.codeActionsOnSave": {
-    "source.organizeImports": true
-  },
-
-  // SQL Tools settings
-  "sqltools.useNodeRuntime": true
+    // Configurações do plugin APC
+    "apc.electron": {
+        "titleBarStyle": "hiddenInset",
+        "frame": false
+    },
+    "apc.header": {
+        "height": 36
+    },
+    "apc.listRow": {
+        "height": 24
+    },
+    "apc.font.family": "Inter",
+    
+    "apc.stylesheet": {
+        ".title-label > h2": "display: none",
+        ".editor-actions": "display: none",
+        ".pane-body": "padding: 8px",
+        ".pane-header": "padding: 0 8px",
+        ".split-view-view:first-child .paneheader": "display: none !important;",
+        ".monaco-list-row": "border-radius: 4px;",
+        "monaco-workbench .monaco-list:not(.element-focused):focus:before": "display: none;"       
+    },
+    "color-highlight.markerType": "foreground",
+    "color-highlight.matchRgbWithNoFunction": true,
+    "color-highlight.matchHslWithNoFunction": true,
+    "resmon.show.battery": false,
+    "resmon.show.cputemp": true,
+    "git.openRepositoryInParentFolders": "never",
 }
