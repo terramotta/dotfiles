@@ -18,5 +18,8 @@ function basic_system_setup {
     echo "Desativando aceleração do mouse."
     xset m 0 0
 
+    echo "Configuração para minimizar programas ao clicar no ícone"
+    gsettings set org.gnome.shell.extensions.dash-to-dock click-action 'minimize'
+
     echo "Configuração básica do sistema concluída."
 }
