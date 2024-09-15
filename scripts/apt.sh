@@ -26,7 +26,6 @@ function install_apps {
         "tcl-tk"
         "python-tk"
         "bash"
-        "zsh"
         "git"
         "tree"
         "pylint"
@@ -40,6 +39,7 @@ function install_apps {
     echo "Instalando utilitários adicionais via APT..."
     utils=(
         "firefox"
+        "zstd"
         "vlc"
         "gimp"
         "htop"
@@ -67,7 +67,11 @@ function install_apps {
     sudo apt install -y snapd
     snap_apps=(
         "spotify"
-        "slack"
+        "clickup"
+        "discord"
+        "bitwarden"
+        "todoist"
+        "anki-ppd"
     )
     for app in "${snap_apps[@]}"; do
         echo "Instalando $app via Snap..."
