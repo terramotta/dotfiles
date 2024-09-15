@@ -142,5 +142,9 @@ function install_apps {
     echo "Faça login no OneDrive pelas configurações..."
     read
 
+    echo "Ajuste algo nos tweaks Gnome"
+    gnome-tweaks
+    read
+
     echo "Instalação de aplicativos e ferramentas concluída."
 }
