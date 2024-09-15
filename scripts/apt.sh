@@ -12,10 +12,6 @@ function install_apps {
     apt_apps=(
         "google-chrome-stable"
         "brave-browser"
-        "sublime-text"
-        "visual-studio-code"
-        "postman"       # Pode precisar de um repositório adicional
-        "keyboardcleaner"  # Verifique a disponibilidade
     )
     sudo apt install -y "${apt_apps[@]}"
 
@@ -23,8 +19,6 @@ function install_apps {
     echo "Instalando ferramentas de desenvolvimento via APT..."
     dev_tools=(
         "python"
-        "tcl-tk"
-        "python-tk"
         "bash"
         "git"
         "tree"
@@ -32,6 +26,10 @@ function install_apps {
         "black"
         "node"
         "build-essential"
+        "sublime-text"
+        "visual-studio-code"
+        "vscode"
+        "code"
     )
     sudo apt install -y "${dev_tools[@]}"
 
@@ -49,11 +47,13 @@ function install_apps {
 
     # Instalar fontes via APT
     echo "Instalando fontes via APT..."
-    fonts=(
-        "fonts-dejavu"
-        "fonts-freefont-ttf"
-    )
-    sudo apt install -y "${fonts[@]}"
+    echo "Instale manualmente as fontes: JetBrainsMono Nerd Font, Inter, JetBrains Mono"
+    # fonts=(
+    #     "fonts-dejavu"
+    #     "fonts-freefont-ttf"
+    #     "JetBrainsMono Nerd Font"
+    # )
+    # sudo apt install -y "${fonts[@]}"
 
     # Após instalar fontes, importar configurações do Terminal
     echo "Importe suas configurações do terminal..."
@@ -68,10 +68,10 @@ function install_apps {
     snap_apps=(
         "spotify"
         "clickup"
-        "discord"
         "bitwarden"
         "todoist"
         "anki-ppd"
+        "code --classic"
     )
     for app in "${snap_apps[@]}"; do
         echo "Instalando $app via Snap..."
@@ -83,7 +83,6 @@ function install_apps {
     sudo apt install -y flatpak
     flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
     flatpak_apps=(
-        "com.github.unactuallimit.steam"
         "com.discordapp.Discord"
     )
     for app in "${flatpak_apps[@]}"; do
